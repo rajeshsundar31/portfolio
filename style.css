@@ -1,0 +1,192 @@
+:root{
+    --bg: #0A1428;
+    --bg-panel: #0E1B36;
+    --bg-card: #101F3D;
+    --flutter-blue: #0175C2;
+    --flutter-sky: #13B9FD;
+    --amber: #FFC107;
+    --text: #E8EEF5;
+    --text-dim: #8B9CB6;
+    --line: rgba(139,156,182,0.16);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(19,185,253,0.08), transparent 45%),
+      radial-gradient(circle at 90% 20%, rgba(1,117,194,0.10), transparent 40%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.5;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,20,40,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .brand{ font-family:var(--mono); font-weight:600; font-size:14px; color:var(--flutter-sky); display:flex; align-items:center; gap:8px;}
+  .brand::before{ content:"›_"; color:var(--amber); }
+  .navlinks{ display:flex; gap:28px; font-size:14px; color:var(--text-dim); }
+  .navlinks a:hover{ color:var(--flutter-sky); }
+
+  /* HERO */
+  header.hero{ padding:88px 0 64px; }
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.08em;
+    color:var(--text-dim); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:#3ddc84; box-shadow:0 0 8px #3ddc84; }
+
+  .hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:stretch; }
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  .editor{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 24px 60px -30px rgba(0,0,0,0.6);
+  }
+  .editor-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:12px 16px; border-bottom:1px solid var(--line);
+    font-family:var(--mono); font-size:12px; color:var(--text-dim);
+  }
+  .editor-bar span.file{ margin-left:8px; color:var(--flutter-sky); }
+  .dots{ display:flex; gap:6px; }
+  .dots i{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .dots i:nth-child(1){ background:#ff5f57; }
+  .dots i:nth-child(2){ background:#febc2e; }
+  .dots i:nth-child(3){ background:#28c840; }
+
+  .code{
+    font-family:var(--mono); font-size:13px; padding:22px 20px;
+    color:#c9d6e8; overflow-x:auto;
+  }
+  .code .ln{ color:#3d4d68; display:inline-block; width:22px; user-select:none; }
+  .k{ color:var(--flutter-sky); }
+  .c{ color:#5b7091; }
+  .s{ color:var(--amber); }
+  .fn{ color:#9fd6ff; }
+
+  .preview{
+    background:linear-gradient(160deg, var(--bg-card), #0b1830);
+    border:1px solid var(--line);
+    border-radius:14px;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:36px;
+    position:relative;
+  }
+  .preview::before{
+    content:"RENDERED";
+    position:absolute; top:16px; right:18px;
+    font-family:var(--mono); font-size:10px; letter-spacing:0.1em;
+    color:var(--text-dim);
+  }
+  .preview h1{
+    font-size:34px; font-weight:800; line-height:1.15; margin-bottom:10px;
+  }
+  .preview h1 span{ color:var(--flutter-sky); }
+  .preview p.role{ font-family:var(--mono); color:var(--amber); font-size:14px; margin-bottom:16px; }
+  .preview p.desc{ color:var(--text-dim); font-size:15px; max-width:38ch; }
+
+  .reload-btn{
+    margin-top:24px; align-self:flex-start;
+    font-family:var(--mono); font-size:13px;
+    background:var(--flutter-blue); color:#fff;
+    border:none; padding:10px 18px; border-radius:8px;
+    cursor:pointer; display:flex; align-items:center; gap:8px;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .reload-btn:hover{ background:var(--flutter-sky); transform:translateY(-1px); }
+  .reload-btn .bolt{ font-size:15px; }
+  .spin{ animation:spin .6s ease; }
+  @keyframes spin{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+  @media (prefers-reduced-motion: reduce){ .spin{ animation:none; } }
+
+  /* STATS */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+    margin-top:48px;
+  }
+  @media (max-width:700px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+  .stat{ background:var(--bg-panel); padding:22px 20px; }
+  .stat .num{ font-family:var(--mono); font-size:26px; font-weight:700; color:var(--flutter-sky); }
+  .stat .lbl{ font-size:12px; color:var(--text-dim); margin-top:4px; font-family:var(--mono);}
+
+  /* SECTION HEADERS */
+  .section{ padding:76px 0; border-top:1px solid var(--line); }
+  .sec-head{ margin-bottom:40px; }
+  .sec-head .tag{ font-family:var(--mono); font-size:12px; color:var(--amber); margin-bottom:8px; }
+  .sec-head h2{ font-size:28px; font-weight:800; }
+  .sec-head p{ color:var(--text-dim); margin-top:8px; max-width:56ch; }
+
+  /* PROJECTS */
+  .projects{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  @media (max-width:760px){ .projects{ grid-template-columns:1fr; } }
+  .card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:14px;
+    padding:24px; position:relative; overflow:hidden;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .card:hover{ transform:translateY(-4px); border-color:var(--flutter-sky); }
+  .card .comment{ font-family:var(--mono); font-size:12px; color:#3d4d68; margin-bottom:10px; }
+  .card h3{ font-size:19px; margin-bottom:8px; }
+  .card p{ color:var(--text-dim); font-size:14px; margin-bottom:16px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:var(--mono); font-size:11px; color:var(--flutter-sky);
+    border:1px solid rgba(19,185,253,0.35); padding:4px 9px; border-radius:20px;
+    background:rgba(19,185,253,0.06);
+  }
+  .card .metric{
+    margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
+    font-family:var(--mono); font-size:12px; color:var(--amber);
+  }
+
+  /* WIDGET TREE SKILLS */
+  .tree{ font-family:var(--mono); font-size:14px; color:var(--text-dim); }
+  .tree .node{ padding:9px 0 9px 0; border-bottom:1px dashed var(--line); }
+  .tree .node:last-child{ border-bottom:none; }
+  .tree .depth1{ padding-left:0; }
+  .tree .depth2{ padding-left:26px; }
+  .tree .depth3{ padding-left:52px; }
+  .tree .branch{ color:#3d4d68; margin-right:8px; }
+  .tree .name{ color:var(--text); font-weight:600; }
+  .tree .tag2{ color:var(--flutter-sky); }
+  .tree .note{ color:var(--text-dim); font-size:12px; }
+
+  /* EXPERIENCE */
+  .exp-item{ display:grid; grid-template-columns:140px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid var(--line); }
+  .exp-item:last-child{ border-bottom:none; }
+  .exp-item .period{ font-family:var(--mono); font-size:12px; color:var(--text-dim); padding-top:3px;}
+  .exp-item h3{ font-size:16px; margin-bottom:4px; }
+  .exp-item .co{ color:var(--flutter-sky); font-size:13px; margin-bottom:8px; font-family:var(--mono);}
+  .exp-item p{ color:var(--text-dim); font-size:14px; }
+
+  /* CONTACT / BUILD */
+  .build-box{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:14px;
+    padding:34px; text-align:center;
+  }
+  .build-box .prompt{ font-family:var(--mono); color:var(--text-dim); font-size:13px; margin-bottom:10px; }
+  .build-box .cmd{ font-family:var(--mono); font-size:18px; color:var(--flutter-sky); margin-bottom:22px; }
+  .build-box .cmd .amber{ color:var(--amber); }
+  .contact-links{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+  .contact-links a{
+    font-family:var(--mono); font-size:13px; padding:10px 18px; border-radius:8px;
+    border:1px solid var(--line); color:var(--text); transition:all .2s ease;
+  }
+  .contact-links a:hover{ border-color:var(--flutter-sky); color:var(--flutter-sky); }
+
+  footer{ padding:32px 0; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-dim); border-top:1px solid var(--line); }
